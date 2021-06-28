@@ -1,0 +1,157 @@
+FORMAT: 1A
+
+HOST: https://domain.ar/
+
+# SQL Engine methods
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Get data from a Table [/tables/{table_name}?fields={field1, field2}]
+
++ Parameters
+    + table_name (str) - Name of table, associated to a model in Django models, eg: Movie
+
++ Query Parameters
+    + fields (list) - List of fields included in clausule Select
+
+### Select {*} from {table} [GET]
+
++ Request
+    + Headers
+
+            Authorization: Token ABCDEF
+
++ Response 200 (application/json)
+
+        [{
+            "title":"Batman",
+            "release_date":"2021-06-24T14:18:35Z",
+            "imdb_ranking":9.7,
+            "director":1,
+        },
+        {
+            "title":"Spiderman",
+            "release_date":"2021-06-24T14:18:35Z",
+            "imdb_ranking":9.7,
+            "director":1,
+        }
+        ]
+
+
++ Response 401 (application/json)
+
+        {
+            "detail":"Authentication credentials were not provided.",
+            "status_code":401
+        }
+
++ Response 404 (application/json)
+
+        {
+            "detail":"the resource Foo does not exist",
+            "status_code":404
+        }
+        
+### Select {title, release_date} from {table} [GET]
+
++ Request
+    + Headers
+
+            Authorization: Token ABCDEF
+
++ Response 200 (application/json)
+
+        [{
+            "title":"Batman",
+            "release_date":"2021-06-24T14:18:35Z",
+        },
+        {
+            "title":"Spiderman",
+            "release_date":"2021-06-24T14:18:35Z",
+        }
+        ]
+
+
++ Response 401 (application/json)
+
+        {
+            "detail":"Authentication credentials were not provided.",
+            "status_code":401
+        }
+
++ Response 400 (application/json)
+
+        {
+            "detail":"the resource {table_name} does not exist",
+            "status_code":400
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "detail":"the resource Foo does not exist",
+            "status_code":404
+        }
+        
+        
+## Insert data INTO a Table [/tables/{table_name}]
+
++ Parameters
+    + table_name (str) - Name of table, associated to a model in Django models, eg: Movie
+
++ Query Parameters
+    + fields (list) - List of fields included in clausule Select
+
+### INSERT INTO {table} VALUES {fields} [POST]
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABCDEF
+    
+
+    + Body
+        {
+            'title': 'Batman',
+            'release_date': '2021-06-24T14:18:35Z',
+            'imdb_ranking': 9.7,
+            'director': 1
+        }
+
++ Response 201 (application/json)
+
+        {
+            "id": 1
+            "title":"Batman",
+            "release_date":"2021-06-24T14:18:35Z",
+            "imdb_ranking":9.7,
+            "director":1,
+        }
+
++ Response 400 (application/json)
+
+        {
+            "director|{*FIELDS}": ['This field may not be null.'], 
+            "status_code": 400
+        }
+        
++ Response 400 (application/json)
+
+        {
+            "detail": "IntegrityError(null value in column {FIELD} violates not-null constraint DETAIL:  Failing row contains (1, Batman, 2021-06-24 14:18:35+00, 9.7, null).)", 
+            "status_code": 400
+        }
+        
++ Response 401 (application/json)
+
+        {
+            "detail":"Authentication credentials were not provided.",
+            "status_code":401
+        }
+
++ Response 404 (application/json)
+
+        {
+            "detail":"the resource Foo does not exist",
+            "status_code":404
+        }
