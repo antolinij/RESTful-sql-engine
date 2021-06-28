@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  web:
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    command: gunicorn ine.wsgi:application --bind 0.0.0.0:8001
+    expose:
+      - 8001
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+  db:
+    image: postgres:11.0
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.db
+  nginx:
+    build: ./nginx
+    ports:
+      - 1338:80
+    depends_on:
+      - web
+volumes:
+  postgres_data:
+
