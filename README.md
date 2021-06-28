@@ -24,9 +24,9 @@ To install the project you should just use basic docker-compose commands.
 7. Example to run a single test:  `docker-compose exec web python manage.py test api.tests.GetMovieTestCase`
 8. after test remove images and volumes unused in docker `docker system prune -a`
 
-## note #1 These files have to be in the folder as the docker-compose.yml file
-# you should choose your own data 
-# .env:
+# note #1 
+## These files have to be in the folder as the docker-compose.yml file. You should choose your own data 
+## File .env:
 DEBUG=0
 SECRET_KEY=asd123sadfas234JH7DDFs3
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
@@ -38,7 +38,7 @@ SQL_HOST=db
 SQL_PORT=5432
 DATABASE=postgres
 
-# .env.db:
+# File .env.db:
 POSTGRES_USER=ine_user
 POSTGRES_PASSWORD=super_secreta1234
 POSTGRES_DB=ine
