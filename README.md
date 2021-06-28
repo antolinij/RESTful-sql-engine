@@ -25,6 +25,7 @@ To install the project you should just use basic docker-compose commands.
 8. Example to run a single test:  `docker-compose exec web python manage.py test api.tests.GetMovieTestCase`
 9. after test remove images and volumes unused in docker `docker system prune -a`
 
+# NOTES
 _note #1: The next files have to be in the folder as the docker-compose.yml file. You should choose your own data_
 ## File .env:
 DEBUG=0
