@@ -28,14 +28,23 @@ To install the project you should just use basic docker-compose commands.
 ## The next files have to be in the folder as the docker-compose.yml file. You should choose your own data 
 ## File .env:
 DEBUG=0
+
 SECRET_KEY=asd123sadfas234JH7DDFs3
+
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+
 SQL_ENGINE=django.db.backends.postgresql
+
 SQL_DATABASE=ine
+
 SQL_USER=ine_user
+
 SQL_PASSWORD=super_secreta1234
+
 SQL_HOST=db
+
 SQL_PORT=5432
+
 DATABASE=postgres
 
 # File .env.db:
