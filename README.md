@@ -25,7 +25,7 @@ To install the project you should just use basic docker-compose commands.
 8. after test remove images and volumes unused in docker `docker system prune -a`
 
 # note #1 
-## These files have to be in the folder as the docker-compose.yml file. You should choose your own data 
+## The next files have to be in the folder as the docker-compose.yml file. You should choose your own data 
 ## File .env:
 DEBUG=0
 SECRET_KEY=asd123sadfas234JH7DDFs3
