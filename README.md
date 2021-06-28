@@ -16,13 +16,14 @@ In this repo you'll find a simple implementation of a Flask API server. The tech
 To install the project you should just use basic docker-compose commands.
 
 1. Clone this repository
-2. Create two files (.env y .env.db) with credentials for django and postgresql. See note #1 at the end of this readme, there are examples of these files.
-3. Build the container: `docker-compose build`
-4. Run it: `docker-compose up -d`
-5. Run the tests (Needs a running container): `docker-compose exec web python manage.py test`
-6. You can run `docker-compose exec app bash` to have a shell inside the container.
-7. Example to run a single test:  `docker-compose exec web python manage.py test api.tests.GetMovieTestCase`
-8. after test remove images and volumes unused in docker `docker system prune -a`
+2. Go to the folder _/ine_
+3. Create two files (.env y .env.db) with credentials for django and postgresql. See note #1 at the end of this readme, there are examples of these files.
+4. Build the container: `docker-compose build`
+5. Run it: `docker-compose up -d`
+6. Run the tests (Needs a running container): `docker-compose exec web python manage.py test`
+7. You can run `docker-compose exec app bash` to have a shell inside the container.
+8. Example to run a single test:  `docker-compose exec web python manage.py test api.tests.GetMovieTestCase`
+9. after test remove images and volumes unused in docker `docker system prune -a`
 
 # note #1 
 ## The next files have to be in the folder as the docker-compose.yml file. You should choose your own data 
